@@ -1,5 +1,6 @@
 package com.matheuscardoso.springbootmongodb.domain.entities;
 
+import com.matheuscardoso.springbootmongodb.domain.dto.UserDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,4 +18,9 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+
+    public User(UserDTO userDTO) {
+        this.name = userDTO.getName();
+        this.email = userDTO.getEmail();
+    }
 }

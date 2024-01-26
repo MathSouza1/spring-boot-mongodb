@@ -6,10 +6,7 @@ import com.matheuscardoso.springbootmongodb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,12 +21,18 @@ public class UserController {
     public ResponseEntity<List<UserDTO>> findAll() {
        List<User> userList = userService.findAll();
        List<UserDTO> userDTOList = userList.stream().map(UserDTO::new).toList();
-       return new ResponseEntity<>(userDTOList, HttpStatus.CREATED);
+       return new ResponseEntity<>(userDTOList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable String id) {
         User user = userService.findById(id);
         return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<User> insert(@RequestBody UserDTO userDTO) {
+        User user = userService.insert(userDTO);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }
