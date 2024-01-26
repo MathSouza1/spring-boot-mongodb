@@ -1,6 +1,7 @@
 package com.matheuscardoso.springbootmongodb.controllers;
 
 import com.matheuscardoso.springbootmongodb.domain.dto.UserDTO;
+import com.matheuscardoso.springbootmongodb.domain.entities.Post;
 import com.matheuscardoso.springbootmongodb.domain.entities.User;
 import com.matheuscardoso.springbootmongodb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,11 @@ public class UserController {
         User user = new User(id, userDTO);
         user = userService.update(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User user = userService.findById(id);
+        return new ResponseEntity<>(user.getPostList(), HttpStatus.OK);
     }
 }
