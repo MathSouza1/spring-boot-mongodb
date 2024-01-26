@@ -29,4 +29,8 @@ public class UserService {
         User user = new User(userDTO);
         return userRepository.insert(user);
     }
+
+    public void delete(String id) {
+        userRepository.delete(findById(id));
+    }
 }

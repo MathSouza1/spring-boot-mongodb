@@ -35,4 +35,10 @@ public class UserController {
         User user = userService.insert(userDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable String id) {
+        userService.delete(id);
+        return new ResponseEntity<>("User deleted!", HttpStatus.NO_CONTENT);
+    }
 }
