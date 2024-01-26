@@ -1,4 +1,4 @@
-package com.matheuscardoso.springbootmongodb.domain;
+package com.matheuscardoso.springbootmongodb.domain.entities;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

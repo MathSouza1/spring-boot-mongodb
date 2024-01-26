@@ -1,7 +1,7 @@
-package com.matheuscardoso.springbootmongodb.controller;
+package com.matheuscardoso.springbootmongodb.controllers;
 
-import com.matheuscardoso.springbootmongodb.domain.User;
-import com.matheuscardoso.springbootmongodb.service.UserService;
+import com.matheuscardoso.springbootmongodb.domain.entities.User;
+import com.matheuscardoso.springbootmongodb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
