@@ -1,5 +1,6 @@
 package com.matheuscardoso.springbootmongodb.configs;
 
+import com.matheuscardoso.springbootmongodb.domain.dto.AuthorDTO;
 import com.matheuscardoso.springbootmongodb.domain.entities.Post;
 import com.matheuscardoso.springbootmongodb.domain.entities.User;
 import com.matheuscardoso.springbootmongodb.repositories.PostRepository;
@@ -34,8 +35,8 @@ public class InstantiationConfig implements CommandLineRunner {
         User thirdUser = new User(null, "Bob Grey", "bob@gmail.com");
         userRepository.saveAll(Arrays.asList(firstUser, secondUser, thirdUser));
 
-        Post firstPost = new Post(null, simpleDateFormat.parse("21/03/2018"), "Partiu Viagem", "Vou viajar para São Paulo. Abraços!", firstUser);
-        Post secondPost = new Post(null, simpleDateFormat.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", firstUser);
+        Post firstPost = new Post(null, simpleDateFormat.parse("21/03/2018"), "Partiu Viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(firstUser));
+        Post secondPost = new Post(null, simpleDateFormat.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(firstUser));
         postRepository.saveAll(Arrays.asList(firstPost, secondPost));
     }
 }
