@@ -38,5 +38,9 @@ public class InstantiationConfig implements CommandLineRunner {
         Post firstPost = new Post(null, simpleDateFormat.parse("21/03/2018"), "Partiu Viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(firstUser));
         Post secondPost = new Post(null, simpleDateFormat.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(firstUser));
         postRepository.saveAll(Arrays.asList(firstPost, secondPost));
+
+        firstUser.getPostList().add(firstPost);
+        firstUser.getPostList().add(secondPost);
+        userRepository.save(firstUser);
     }
 }
