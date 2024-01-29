@@ -9,4 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends MongoRepository<Post, Long> {
+    Optional<Post> findById(String id);
 }
